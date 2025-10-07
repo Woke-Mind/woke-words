@@ -3,6 +3,19 @@
 - [timer](./timer)
 - [words](./words)
 
+# notes
+
+```
+<iframe
+  src="https://www.youtube.com/embed/VIDEO_ID?enablejsapi=1&origin=https://<username>.github.io"
+  allowfullscreen
+></iframe>
+
+  src="https://www.youtube.com/embed/VIDEO_ID?enablejsapi=1&origin=https://woke-mind.github.io"
+
+https://woke-mind.github.io/woke-words/timer/
+```
+
 ## YouTube Embed and `enablejsapi` Parameter
 
 This project includes embedded YouTube videos using `<iframe>` elements. The `enablejsapi=1` URL parameter is used to enable the YouTube IFrame Player API, which allows JavaScript to control the video playback.
