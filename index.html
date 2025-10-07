@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Video Player</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #f4f4f4;
+      }
+
+      .video-container {
+        width: 1080px;
+        height: 608px;
+        margin: 10px 0;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="video-container">
+      <iframe id="top-video" src="https://www.youtube.com/embed/p9nu-_bpOgo?enablejsapi=1" allowfullscreen></iframe>
+    </div>
+    <div class="video-container">
+      <iframe id="middle-video" src="https://www.youtube.com/embed/1TWrvItWa38?enablejsapi=1" allowfullscreen></iframe>
+    </div>
+    <div class="video-container">
+      <iframe id="bottom-video" src="https://www.youtube.com/embed/mLR4Ou790Ns?enablejsapi=1" allowfullscreen></iframe>
+    </div>
+
+    <script>
+      // Function to play a video after a delay
+      function playVideoAfterDelay(iframeId, delay) {
+        setTimeout(() => {
+          const iframe = document.getElementById(iframeId);
+          const player = iframe.contentWindow;
+          player.postMessage(JSON.stringify({ event: 'command', func: 'playVideo', args: [] }), '*');
+        }, delay);
+      }
+
+      // Start videos with delays
+      window.onload = () => {
+        playVideoAfterDelay('top-video', 1000); // 1 second delay
+        playVideoAfterDelay('middle-video', 2000); // 2 seconds delay
+        playVideoAfterDelay('bottom-video', 3000); // 3 seconds delay
+      };
+    </script>
+  </body>
+</html>
