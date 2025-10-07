@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>work words</title>
+    <title>words ?v-1</title>
     <style>
       body {
         margin: 0;
@@ -29,45 +29,20 @@
     </style>
   </head>
   <body>
-    <div class="video-container">
-      <iframe
-        id="top-video"
-        src="https://www.youtube.com/embed/p9nu-_bpOgo?enablejsapi=1&playlist=p9nu-_bpOgo"
-        allowfullscreen
-      ></iframe>
-    </div>
-    <div class="video-container">
-      <iframe
-        id="middle-video"
-        src="https://www.youtube.com/embed/1TWrvItWa38?enablejsapi=1&playlist=1TWrvItWa38"
-        allowfullscreen
-      ></iframe>
-    </div>
-    <div class="video-container">
-      <iframe
-        id="bottom-video"
-        src="https://www.youtube.com/embed/mLR4Ou790Ns?enablejsapi=1&playlist=mLR4Ou790Ns"
-        allowfullscreen
-      ></iframe>
-    </div>
+    <div class="video-container" id="top-video"></div>
+    <div class="video-container" id="middle-video"></div>
+    <div class="video-container" id="bottom-video"></div>
+
+    <script src="../js/video_player.js" /></script>
 
     <script>
-      // Function to play a video after a delay
-      function playVideoAfterDelay(iframeId, delay) {
-        setTimeout(() => {
-          const iframe = document.getElementById(iframeId);
-          const player = iframe.contentWindow;
-          player.postMessage(JSON.stringify({ event: 'command', func: 'playVideo', args: [] }), '*');
-          player.postMessage(JSON.stringify({ event: 'command', func: 'setLoop', args: [true] }), '*');
-        }, delay * 1000);
+      // This function creates YouTube players after the API code downloads
+      function onYouTubeIframeAPIReady() {
+        players['top-video'] = create_video_player('top-video', 'p9nu-_bpOgo', 80);
+        players['middle-video'] = create_video_player('middle-video', '1TWrvItWa38', 0);
+        players['bottom-video'] = create_video_player('bottom-video', 'mLR4Ou790Ns', 73);
       }
-
-      // Start videos with delays
-      window.onload = () => {
-        playVideoAfterDelay('top-video', 80);
-        playVideoAfterDelay('middle-video', 0);
-        playVideoAfterDelay('bottom-video', 73);
-      };
     </script>
+
   </body>
 </html>
