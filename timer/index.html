@@ -26,58 +26,18 @@
     <div class="video-container" id="middle-video"></div>
     <div class="video-container" id="bottom-video"></div>
 
+    <script src="../js/video_player.js" /></script>
+
     <script>
-      // Load the YouTube IFrame Player API code asynchronously
-      var tag = document.createElement('script');
-      tag.src = 'https://www.youtube.com/iframe_api';
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-      var players = {};
-
       // This function creates YouTube players after the API code downloads
       function onYouTubeIframeAPIReady() {
-        players['top-video'] = new YT.Player('top-video', {
-          height: '608',
-          width: '1080',
-          videoId: 'CEqAFFodf7I',
-          playerVars: {
-            playlist: 'CEqAFFodf7I',
-          },
-        });
-
-        players['middle-video'] = new YT.Player('middle-video', {
-          height: '608',
-          width: '1080',
-          videoId: '0EdIlYuuaw0',
-          playerVars: {
-            playlist: '0EdIlYuuaw0',
-          },
-        });
-
-        players['bottom-video'] = new YT.Player('bottom-video', {
-          height: '608',
-          width: '1080',
-          videoId: 'tYZi9ugG7Gk',
-          playerVars: {
-            playlist: 'tYZi9ugG7Gk',
-          },
-        });
+        players['top-video'] = create_video_player('top-video', 'R6DiFlAXrS0', 0);
+        players['middle-video'] = create_video_player('middle-video', 'R6DiFlAXrS0', 5);
+        players['bottom-video'] = create_video_player('bottom-video', 'R6DiFlAXrS0', 10);
+        // players['middle-video'] = create_video_player('middle-video', '0EdIlYuuaw0', 5);
+        // players['bottom-video'] = create_video_player('bottom-video', 'tYZi9ugG7Gk', 10);
       }
-
-      // Function to play a video after a delay
-      function playVideoAfterDelay(playerId, delay) {
-        setTimeout(() => {
-          players[playerId].playVideo();
-        }, delay * 1000);
-      }
-
-      // Start videos with delays
-      window.onload = () => {
-        playVideoAfterDelay('top-video', 0);
-        playVideoAfterDelay('middle-video', 0);
-        playVideoAfterDelay('bottom-video', 0);
-      };
     </script>
+
   </body>
 </html>
