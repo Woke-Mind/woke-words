@@ -19,45 +19,56 @@
         height: 608px;
         margin: 10px 0;
       }
-
-      iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-      }
     </style>
   </head>
   <body>
-    <div class="video-container">
-      <iframe
-        id="top-video"
-        src="https://www.youtube.com/embed/7NWN3wivxhA?enablejsapi=1&playlist=7NWN3wivxhA"
-        allowfullscreen
-      ></iframe>
-    </div>
-    <div class="video-container">
-      <iframe
-        id="middle-video"
-        src="https://www.youtube.com/embed/0EdIlYuuaw0?enablejsapi=1&playlist=0EdIlYuuaw0"
-        allowfullscreen
-      ></iframe>
-    </div>
-    <div class="video-container">
-      <iframe
-        id="bottom-video"
-        src="https://www.youtube.com/embed/tYZi9ugG7Gk?enablejsapi=1&playlist=tYZi9ugG7Gk"
-        allowfullscreen
-      ></iframe>
-    </div>
+    <div class="video-container" id="top-video"></div>
+    <div class="video-container" id="middle-video"></div>
+    <div class="video-container" id="bottom-video"></div>
 
     <script>
+      // Load the YouTube IFrame Player API code asynchronously
+      var tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      var players = {};
+
+      // This function creates YouTube players after the API code downloads
+      function onYouTubeIframeAPIReady() {
+        players['top-video'] = new YT.Player('top-video', {
+          height: '608',
+          width: '1080',
+          videoId: 'CEqAFFodf7I',
+          playerVars: {
+            playlist: 'CEqAFFodf7I',
+          },
+        });
+
+        players['middle-video'] = new YT.Player('middle-video', {
+          height: '608',
+          width: '1080',
+          videoId: '0EdIlYuuaw0',
+          playerVars: {
+            playlist: '0EdIlYuuaw0',
+          },
+        });
+
+        players['bottom-video'] = new YT.Player('bottom-video', {
+          height: '608',
+          width: '1080',
+          videoId: 'tYZi9ugG7Gk',
+          playerVars: {
+            playlist: 'tYZi9ugG7Gk',
+          },
+        });
+      }
+
       // Function to play a video after a delay
-      function playVideoAfterDelay(iframeId, delay) {
+      function playVideoAfterDelay(playerId, delay) {
         setTimeout(() => {
-          const iframe = document.getElementById(iframeId);
-          const player = iframe.contentWindow;
-          player.postMessage(JSON.stringify({ event: 'command', func: 'playVideo', args: [] }), '*');
-          player.postMessage(JSON.stringify({ event: 'command', func: 'setLoop', args: [true] }), '*');
+          players[playerId].playVideo();
         }, delay * 1000);
       }
 
