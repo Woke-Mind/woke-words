@@ -48,11 +48,22 @@
         }, delay);
       }
 
-      // Start videos with delays
+      // Function to enable looping for a video
+      function enableLooping(iframeId) {
+        const iframe = document.getElementById(iframeId);
+        const player = iframe.contentWindow;
+        player.postMessage(JSON.stringify({ event: 'command', func: 'setLoop', args: [true] }), '*');
+      }
+
+      // Start videos with delays and enable looping
       window.onload = () => {
         playVideoAfterDelay('top-video', 1000); // 1 second delay
         playVideoAfterDelay('middle-video', 2000); // 2 seconds delay
         playVideoAfterDelay('bottom-video', 3000); // 3 seconds delay
+
+        enableLooping('top-video');
+        enableLooping('middle-video');
+        enableLooping('bottom-video');
       };
     </script>
   </body>
