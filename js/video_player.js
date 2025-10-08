@@ -13,6 +13,7 @@ function create_video_player(id, vid, delay) {
     videoId: vid,
     playerVars: {
       playlist: vid, // Enables looping by setting the playlist to the same video ID
+      cc_load_policy: true,
     },
     events: {
       onReady: (event) => {
