@@ -6,6 +6,14 @@
 # notes
 
 ```
+initally co-pilot recommended iframe using url param enablejsapi=1
+but this did not start video when runnning from host,
+video started ok running locally
+switch to YT.Player
+[x] re-factor into shared create_video_player in js/video_player.js
+```
+
+```
 <iframe
   src="https://www.youtube.com/embed/VIDEO_ID?enablejsapi=1&origin=https://<username>.github.io"
   allowfullscreen
