@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>words ?v=2</title>
+    <title>words ?v=3</title>
     <style>
       body {
         margin: 0;
@@ -31,19 +31,20 @@
   <body>
     <div class="video-container" id="top-video"></div>
     <div class="video-container" id="middle-video"></div>
-    <div class="video-container" id="bottom-video"></div>
+    <div class="video-container" id="bottom-video">
+      <iframe src="https://woke-mind.github.io/vote-woke-banner/?scroll=1" allowfullscreen> </iframe>
+    </div>
 
-    <script src="../js/video_player.js" /></script>
+    <script src="../js/video_player.js"></script>
 
     <script>
       // This function creates YouTube players after the API code downloads
       function onYouTubeIframeAPIReady() {
         players['top-video'] = create_video_player('top-video', 'p9nu-_bpOgo', 0);
         players['middle-video'] = create_video_player('middle-video', 'mLR4Ou790Ns', 0);
-        players['bottom-video'] = create_video_player('bottom-video', '8K6-cEAJZlE', 0);
+        // players['bottom-video'] = create_video_player('bottom-video', '8K6-cEAJZlE', 0);
         // players['bottom-video'] = create_video_player('bottom-video', '1TWrvItWa38', 0);
       }
     </script>
-
   </body>
 </html>
